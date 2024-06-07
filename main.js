@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import router from './router.js'
 import store from './store.js'
 
-export const vue = createApp({
+export const vue  = createApp({
   template: /*html*/`<router-view />`
 })
 

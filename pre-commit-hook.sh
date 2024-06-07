@@ -10,7 +10,6 @@ if [ "$1" = "--install" ]; then
     exit
 fi
 
-staged_files=()
 readarray -t staged_files < <(git diff --name-only --cached)
 echo "Staged files:" "${staged_files[@]}"
 
