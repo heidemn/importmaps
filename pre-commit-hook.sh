@@ -11,7 +11,9 @@ if [ "$1" = "--install" ]; then
 fi
 
 readarray -t staged_files < <(git diff --name-only --cached)
-echo "Linting staged files:" "${staged_files[@]}"
+echo "***********************"
+echo "* Linting staged files:" "${staged_files[@]}"
+echo "***********************"
 
 if ! npx eslint --no-warn-ignored -- "${staged_files[@]}"; then
     npx eslint --no-warn-ignored --fix -- "${staged_files[@]}"
