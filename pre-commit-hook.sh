@@ -10,11 +10,12 @@ if [ "$1" = "--install" ]; then
     exit
 fi
 
+staged_files=()
 readarray -t staged_files < <(git diff --name-only --cached)
-echo "Staged files:" "$staged_files{@}"
+echo "Staged files:" "${staged_files[@]}"
 
 set -x
-if ! npx eslint --no-warn-ignored -- $( git diff --name-only --cached ); then
-    npx eslint --no-warn-ignored --fix -- $( git diff --name-only --cached )
+if ! npx eslint --no-warn-ignored -- "${staged_files[@]}"; then
+    npx eslint --no-warn-ignored --fix -- "${staged_files[@]}"
     exit 1
 fi
